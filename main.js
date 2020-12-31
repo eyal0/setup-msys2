@@ -109,9 +109,9 @@ class PackageCache {
   }
 
   async restore() {
-    // We ideally want a cache matching our configuration, but every cache is OK since we prune it later anyway
+    // We want a cache matching our configuration.  A cache key that doesn't match may have been created by a broken configuration.
     this.restoreKey = await restoreCache([this.pkgCachePath], this.jobCacheKey, [this.jobCacheKey, this.fallbackCacheKey]);
-    return (this.restoreKey !== undefined)
+    return (this.restoreKey == this.jobCacheKey)
   }
 
   async save() {
@@ -145,7 +145,7 @@ class InstallCache {
   async restore() {
     // We only want a cache which matches our configuration
     this.restoreKey = await restoreCache([this.msysRootDir], this.jobCacheKey, [this.jobCacheKey]);
-    return (this.restoreKey !== undefined)
+    return (this.restoreKey == this.jobCacheKey)
   }
 
   async save() {
