@@ -166,6 +166,9 @@ async function writeWrapper(msysRootDir, pathtype, destDir, name) {
     `setlocal`,
     `IF NOT DEFINED MSYS2_PATH_TYPE set MSYS2_PATH_TYPE=` + pathtype,
     `set CHERE_INVOKING=1`,
+    `echo OMG here is the script`,
+    `type %*`,
+    `echo That is the end of it`,
     msysRootDir + `\\usr\\bin\\bash.exe -leo pipefail %*`
   ].join('\r\n');
 
