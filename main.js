@@ -162,11 +162,13 @@ let cmd = null;
 
 async function writeWrapper(msysRootDir, pathtype, destDir, name) {
   let wrap = [
-    `@echo off`,
     `setlocal`,
+    `echo OMG`,
+    `type %*`,
+    `echo done`,
     `IF NOT DEFINED MSYS2_PATH_TYPE set MSYS2_PATH_TYPE=` + pathtype,
     `set CHERE_INVOKING=1`,
-    msysRootDir + `\\usr\\bin\\bash.exe -leo pipefail %*`
+    msysRootDir + `\\usr\\bin\\bash.exe -leo pipefail foo`
   ].join('\r\n');
 
   cmd = path.join(destDir, name);
