@@ -168,7 +168,7 @@ async function writeWrapper(msysRootDir, pathtype, destDir, name) {
     `echo done`,
     `IF NOT DEFINED MSYS2_PATH_TYPE set MSYS2_PATH_TYPE=` + pathtype,
     `set CHERE_INVOKING=1`,
-    msysRootDir + `\\usr\\bin\\bash.exe -leo pipefail foo`
+    msysRootDir + `\\usr\\bin\\bash.exe -leo pipefail %*`
   ].join('\r\n');
 
   cmd = path.join(destDir, name);
