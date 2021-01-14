@@ -164,8 +164,9 @@ async function writeWrapper(msysRootDir, pathtype, destDir, name) {
   let wrap = [
     `setlocal`,
     `echo OMG`,
-    `echo $Env:GITHUB_SCRIPT`,
-    `type $Env:GITHUB_SCRIPT`,
+    `set`,
+    `echo %GITHUB_SCRIPT%`,
+    `type %GITHUB_SCRIPT%`,
     `echo done`,
     `IF NOT DEFINED MSYS2_PATH_TYPE set MSYS2_PATH_TYPE=` + pathtype,
     `set CHERE_INVOKING=1`,
